@@ -71,3 +71,110 @@ accelerate launch $accelerate_args eval_illada.py \
   --model illada_dist \
   --confirm_run_unsafe_code \
   --model_args model_path='GSAI-ML/iLLaDA-8B-Base',gen_length=1024,steps=32,block_length=32,var=True
+
+
+
+#===============================
+# ILLaDA-8B-Instruct
+#===============================
+# You can modify the following lines to use your own cluster
+accelerate_args="\
+  --multi_gpu \
+  --num_machines ${nnodes} \
+  --num_processes ${total_processes} \
+  --machine_rank ${ARNOLD_ID} \
+  --main_process_ip ${master_addr} \
+  --main_process_port ${master_port}"
+
+
+task='mmlu_redux_generative'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=4,block_length=4,steps=4 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 5 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template \
+    --fewshot_as_multiturn
+
+
+task='minerva_math'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=4096,steps=32,block_length=32,var=True,end_think_logit_boost=100,end_think_boost_power=3 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 0 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template 
+
+
+export PYTHONPATH="./eval_instruct${PYTHONPATH:+:$PYTHONPATH}"
+task='mmlu_generative'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=3,block_length=3,steps=3 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 5 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template \
+    --fewshot_as_multiturn
+
+
+export PYTHONPATH="./eval_instruct${PYTHONPATH:+:$PYTHONPATH}"
+task='mmlu_pro_reasoning'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=4096,steps=32,block_length=32,var=True,end_think_logit_boost=100,end_think_boost_power=3 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 0 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template 
+
+
+export PYTHONPATH="./eval_instruct${PYTHONPATH:+:$PYTHONPATH}"
+task='gsm8k_cot_reasoning'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=2048,steps=32,block_length=32,var=True,end_think_logit_boost=100,end_think_boost_power=3 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 0 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template 
+
+
+export PYTHONPATH="./eval_instruct${PYTHONPATH:+:$PYTHONPATH}"
+task='humaneval_reasoning'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=2048,steps=32,block_length=32,var=True,end_think_logit_boost=100,end_think_boost_power=1 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 0 \
+    --output_path /mnt/hdfs/nieshen/Eval_illada_ablation/${task}_${epochs}epoch \
+    --log_samples \
+    --confirm_run_unsafe_code \
+    --apply_chat_template 
+
+
+export PYTHONPATH="./eval_instruct${PYTHONPATH:+:$PYTHONPATH}"
+task='mbpp_reasoning'
+accelerate launch $accelerate_args eval_illada.py \
+    --model illada_dist \
+    --model_args model_path='GSAI-ML/iLLaDA-8B-Instruct',gen_length=2048,steps=16,block_length=16,var=True,end_think_logit_boost=100,end_think_boost_power=3 \
+    --tasks ${task} \
+    --device cuda \
+    --batch_size 1 \
+    --num_fewshot 0 \
+    --confirm_run_unsafe_code \
+    --apply_chat_template 

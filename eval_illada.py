@@ -49,6 +49,7 @@ class ILLaDAEvalHarness(LM):
         temperature=0.,
         remasking='low_confidence',
         var=False,
+        add_bos_token=False,
         end_think_text='</think>',
         end_think_logit_boost=0.,
         end_think_boost_power=2.,
@@ -133,6 +134,7 @@ class ILLaDAEvalHarness(LM):
         self.temperature = temperature
         self.remasking = remasking
         self.var = var
+        self.add_bos_token = add_bos_token
         self.end_think_token_ids = self.tokenizer.encode(
             end_think_text, add_special_tokens=False
         )
@@ -307,6 +309,9 @@ class ILLaDAEvalHarness(LM):
         return correct
 
     def _encode_pair(self, context, continuation):
+        if self.add_bos_token:
+            context = self.tokenizer.bos_token + context
+
         n_spaces = len(context) - len(context.rstrip())
         if n_spaces > 0:
             continuation = context[-n_spaces:] + continuation
@@ -372,7 +377,11 @@ class ILLaDAEvalHarness(LM):
         out = []
         for elem in tqdm(ds, desc="Generating..."):
             # iLLaDA currently evaluates one unpadded prompt at a time.
-            prompt = elem["question"].unsqueeze(0).to(self.device)
+            prompt = elem["question"].unsqueeze(0)
+            if self.add_bos_token:
+                bos = torch.tensor([[self.tokenizer.bos_token_id]], dtype=prompt.dtype)
+                prompt = torch.cat([bos, prompt], dim=1)
+            prompt = prompt.to(self.device)
             available_length = self.max_length - prompt.shape[1]
             gen_length = self.gen_length or available_length
             gen_length = min(gen_length, available_length)

@@ -50,6 +50,7 @@ class ILLaDAEvalHarness(LM):
         remasking='low_confidence',
         var=False,
         add_bos_token=False,
+        padd_eos=False,
         end_think_text='</think>',
         end_think_logit_boost=0.,
         end_think_boost_power=2.,
@@ -135,6 +136,7 @@ class ILLaDAEvalHarness(LM):
         self.remasking = remasking
         self.var = var
         self.add_bos_token = add_bos_token
+        self.padd_eos = padd_eos
         self.end_think_token_ids = self.tokenizer.encode(
             end_think_text, add_special_tokens=False
         )
@@ -225,7 +227,16 @@ class ILLaDAEvalHarness(LM):
             un_batch[prompt_index] = self.mask_id
             batch = torch.cat([batch, un_batch])
 
-        logits = self.model(batch).logits
+        if self.padd_eos:
+            eos = torch.full(
+                (batch.shape[0], 1), self.tokenizer.eos_token_id,
+                dtype=batch.dtype, device=batch.device
+            )
+            model_input = torch.cat([batch, eos], dim=-1)
+        else:
+            model_input = batch
+
+        logits = self.model(model_input).logits
 
         if self.cfg > 0.:
             logits, un_logits = torch.chunk(logits, 2, dim=0)

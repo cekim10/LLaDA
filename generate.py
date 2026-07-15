@@ -40,9 +40,63 @@ def get_num_transfer_tokens(mask_index, steps):
     return num_transfer_tokens
 
 
+def contains_token_sequence(tokens, sequence):
+    if sequence.numel() == 0 or tokens.numel() < sequence.numel():
+        return False
+    for start in range(tokens.numel() - sequence.numel() + 1):
+        if torch.equal(tokens[start:start + sequence.numel()], sequence):
+            return True
+    return False
+
+
+def get_next_sequence_token_id(tokens, position, sequence, context_start):
+    max_prefix_length = min(sequence.numel() - 1, position - context_start)
+    for prefix_length in range(max_prefix_length, 0, -1):
+        if torch.equal(tokens[position - prefix_length:position], sequence[:prefix_length]):
+            return sequence[prefix_length].item()
+    return sequence[0].item()
+
+
+def apply_end_think_logit_boost(logits, tokens, candidate_mask_index, context_start,
+                                total_gen_length, end_think_token_ids=None,
+                                end_think_logit_boost=0., end_think_boost_power=2.):
+    """Gradually encourage an end-of-thinking token sequence during generation."""
+    if end_think_logit_boost <= 0 or not end_think_token_ids or total_gen_length <= 0:
+        return logits
+    if any(token_id < 0 or token_id >= logits.shape[-1] for token_id in end_think_token_ids):
+        return logits
+
+    sequence = torch.tensor(end_think_token_ids, dtype=torch.long, device=logits.device)
+    logits = logits.clone()
+
+    for batch_index in range(tokens.shape[0]):
+        if contains_token_sequence(tokens[batch_index, context_start:], sequence):
+            continue
+
+        candidate_positions = torch.nonzero(
+            candidate_mask_index[batch_index], as_tuple=False
+        ).flatten()
+        if candidate_positions.numel() == 0:
+            continue
+
+        position = candidate_positions[0].item()
+        generated_length = position - context_start + 1
+        progress = min(max(generated_length / float(total_gen_length), 0.), 1.)
+        boost = end_think_logit_boost * (progress ** end_think_boost_power)
+        token_id = get_next_sequence_token_id(
+            tokens[batch_index], position, sequence, context_start
+        )
+        logits[batch_index, position, token_id] += boost
+
+    return logits
+
+
 @ torch.no_grad()
 def generate(model, prompt, attention_mask=None, steps=128, gen_length=128, block_length=128, temperature=0.,
-             cfg_scale=0., remasking='low_confidence', mask_id=126336, logits_eos_inf=False, confidence_eos_eot_inf=False):
+             cfg_scale=0., remasking='low_confidence', mask_id=126336, logits_eos_inf=False,
+             confidence_eos_eot_inf=False, end_think_token_ids=None, end_think_logit_boost=0.,
+             end_think_boost_power=2., end_think_context_start=None,
+             end_think_total_gen_length=None):
     '''
     Args:
         model: Mask predictor.
@@ -57,6 +111,11 @@ def generate(model, prompt, attention_mask=None, steps=128, gen_length=128, bloc
         logits_eos_inf: Whether to set the logits of EOS token to -inf. See Appendix B.4 of LLaDA for details
         confidence_eos_eot_inf: Whether to set the confidence of EOS and EoT token to -inf. See Appendix B.4 of LLaDA for details
     '''
+    base_model = getattr(model, 'module', model)
+    model_name = getattr(getattr(base_model, 'config', None), '_name_or_path', '')
+    if 'illada' in model_name.lower():
+        assert prompt.shape[0] == 1, 'iLLaDA currently does not support padded batch generation.'
+
     x = torch.full((prompt.shape[0], prompt.shape[1] + gen_length), mask_id, dtype=torch.long).to(model.device)
     x[:, :prompt.shape[1]] = prompt.clone()
 
@@ -71,11 +130,21 @@ def generate(model, prompt, attention_mask=None, steps=128, gen_length=128, bloc
     assert steps % num_blocks == 0
     steps = steps // num_blocks
 
+    if end_think_context_start is None:
+        end_think_context_start = prompt.shape[1]
+    if end_think_total_gen_length is None:
+        end_think_total_gen_length = gen_length
+
     for num_block in range(num_blocks):
         block_mask_index = (x[:, prompt.shape[1] + num_block * block_length: prompt.shape[1] + (num_block + 1) * block_length:] == mask_id)
         num_transfer_tokens = get_num_transfer_tokens(block_mask_index, steps)
         for i in range(steps):
             mask_index = (x == mask_id)
+            block_start = prompt.shape[1] + num_block * block_length
+            block_end = prompt.shape[1] + (num_block + 1) * block_length
+            candidate_mask_index = mask_index.clone()
+            candidate_mask_index[:, :block_start] = False
+            candidate_mask_index[:, block_end:] = False
             if cfg_scale > 0.:
                 un_x = x.clone()
                 un_x[prompt_index] = mask_id
@@ -87,6 +156,17 @@ def generate(model, prompt, attention_mask=None, steps=128, gen_length=128, bloc
                 logits = un_logits + (cfg_scale + 1) * (logits - un_logits)
             else:
                 logits = model(x, attention_mask=attention_mask).logits
+
+            logits = apply_end_think_logit_boost(
+                logits,
+                x,
+                candidate_mask_index,
+                end_think_context_start,
+                end_think_total_gen_length,
+                end_think_token_ids=end_think_token_ids,
+                end_think_logit_boost=end_think_logit_boost,
+                end_think_boost_power=end_think_boost_power,
+            )
 
             if logits_eos_inf:
                 logits[:, :, 126081] = -torch.inf
@@ -117,6 +197,33 @@ def generate(model, prompt, attention_mask=None, steps=128, gen_length=128, bloc
                 transfer_index[j, select_index] = True
             x[transfer_index] = x0[transfer_index]
 
+    return x
+
+
+@torch.no_grad()
+def var_generate(model, tokenizer, prompt, steps, gen_length, block_length,
+                 temperature=0., cfg_scale=0., remasking='low_confidence',
+                 mask_id=5, stop_tokens=None, end_think_token_ids=None,
+                 end_think_logit_boost=0., end_think_boost_power=2.):
+    """Generate one block at a time without adding future mask blocks."""
+    assert gen_length % block_length == 0
+
+    x = prompt.clone()
+    stop_tokens = stop_tokens or []
+    for _ in range(gen_length // block_length):
+        x = generate(
+            model, x, steps=steps, gen_length=block_length,
+            block_length=block_length, temperature=temperature,
+            cfg_scale=cfg_scale, remasking=remasking, mask_id=mask_id,
+            end_think_token_ids=end_think_token_ids,
+            end_think_logit_boost=end_think_logit_boost,
+            end_think_boost_power=end_think_boost_power,
+            end_think_context_start=prompt.shape[1],
+            end_think_total_gen_length=gen_length,
+        )
+        text = tokenizer.decode(x[0, prompt.shape[1]:], skip_special_tokens=False)
+        if any(stop_token in text for stop_token in stop_tokens):
+            break
     return x
 
 

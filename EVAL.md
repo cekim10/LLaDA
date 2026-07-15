@@ -1,6 +1,7 @@
 # Evaluation
 In this file, we provide the code for the evaluation of [LLaDA-8B-Base](https://huggingface.co/GSAI-ML/LLaDA-8B-Base),
-[LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct) and [LLaDA 1.5](https://arxiv.org/abs/2505.19223).
+[LLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/LLaDA-8B-Instruct), [LLaDA 1.5](https://arxiv.org/abs/2505.19223), 
+[iLLaDA-8B-Base](https://huggingface.co/GSAI-ML/iLLaDA-8B-Base) and [iLLaDA-8B-Instruct](https://huggingface.co/GSAI-ML/iLLaDA-8B-Instruct).
 
 
 ## Benchmarks
@@ -138,6 +139,9 @@ python eval_reverse.py  --type ftb --eos_inf
 # generate the preceding line
 python eval_reverse.py  --type btf --eos_inf
 ```
+
+## iLLaDA Evaluation
+Please refer to `eval_illada.sh` for the required dependencies and execution commands.
 
 ## Acknowledgments
 Thanks [lm-eval](https://github.com/EleutherAI/lm-evaluation-harness) and [OpenCompass](https://github.com/open-compass/opencompass)

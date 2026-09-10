@@ -37,6 +37,7 @@ class StateRecorder:
         self.store_dtype = store_dtype
 
         self.mode = None            # None | 'record' | 'inject'
+        self.record_steps = None    # None = record every step
         self.step = 0               # set by the generation loop before each forward
         self.shared_idx = None      # LongTensor of positions to record / inject (on model device)
         self.traj = {}              # step -> tensor [L+1, n_shared, d]
@@ -72,10 +73,12 @@ class StateRecorder:
         return h
 
     # ------------------------------------------------------------------ modes
-    def start_record(self, shared_idx):
+    def start_record(self, shared_idx, steps=None):
+        """steps: optional set of diffusion steps to record (default: all)."""
         self.mode = "record"
         self.shared_idx = shared_idx
         self.traj = {}
+        self.record_steps = None if steps is None else set(steps)
 
     def start_inject(self, shared_idx, src_traj, k, source="aligned"):
         self.mode = "inject"
@@ -91,7 +94,7 @@ class StateRecorder:
     # ---------------------------------------------------------------- wrapper
     def _make_wrapper(self, li, orig_forward):
         def fwd(x, *args, **kwargs):
-            if self.mode == "record":
+            if self.mode == "record" and (self.record_steps is None or self.step in self.record_steps):
                 if li == 0:
                     self._cur = torch.empty(
                         (self.n_layers + 1, self.shared_idx.numel(), x.shape[-1]),

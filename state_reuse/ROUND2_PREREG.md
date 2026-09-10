@@ -114,6 +114,71 @@ Plots fixed in advance: (a) Q vs C for full / resume / fresh, one panel per
 delta class; (b) compute saved vs L_shared/L_total with quality as color;
 (c) ROC of the H5 observable.
 
+
+## Amendment A1 (2026-09-10, written after the Round 1 seal and before any Round 2 run)
+
+Round 1 (n=50) closed two branches and changed the reading of a third, so Round 2 is
+narrowed before it starts. Sections 2-5 above are superseded by this amendment where they
+conflict; they are kept for the record.
+
+**Round 1 findings that drive the amendment.** (i) Canvas resume reproduces the old answer
+in 92-96% of prompts at t0=48 for every delta including the answer-changing one; it is a
+cache of the old answer, not reuse of state. Dropped from the main branch (H1-H3 retired).
+(ii) Distance locality r ~ 0. Closed. (iii) The step-0 (all-mask canvas) prefix snapshot is
+the only source with no detectable loss at every k; last-step snapshots collapse for k >= 20.
+Reusable state is the *less committed* state, not the most recent one. Source is fixed to
+the step-0 snapshot. (iv) hint_append (short, answer-bearing) breaks reuse while
+multiturn_append (~100 tokens) does not: the question is whether D changes what the prefix
+must mean, not how large or how far away D is.
+
+**Single question for Round 2.** Under long shared context, does step-0 prefix-state reuse
+have (a) large oracle compute headroom and (b) nontrivial decision structure that a cheap
+runtime signal could exploit?
+
+**Pipeline under test.** context change -> choose reusable depth k -> reuse step-0 prefix
+state for layers 0..k-1 -> recompute the rest. No remasking, no adaptive mechanism.
+
+**Workload.** Prompts: GSM8K test[50:100] (n=50, disjoint from Round 1). Shared context:
+a fixed multi-turn GSM8K Q/A history built from test[100:200] (calculator annotations
+stripped), identical for every prompt at a given length, target lengths
+{0, 256, 512, 1024, 2048} tokens. Deltas unchanged (5 types). Sampler unchanged
+(gen 128, 64 steps, block 32). k in {4,...,32}; k=0 is the full recompute.
+
+**Oracle and thresholds (fixed now).**
+- tolerance: pooled accuracy loss vs full recompute >= -2 pp.
+- class oracle: per (ctx, delta) the largest k whose loss satisfies the tolerance for all
+  k' <= k (monotone closure); S_class = mean saved. Requires gold, so preserving deltas only.
+- uniform policy: one k per ctx that satisfies the tolerance in *every* preserving delta class
+  (min over class oracles), i.e. the delta-blind baseline; S_uniform. (Pooling across classes
+  would let one class's gain mask another's loss.)
+- prompt oracle: per (prompt, ctx, delta) the largest k with answer == full for all k' <= k;
+  S_prompt. Upper bound on per-prompt decision value; gold-free so includes number_edit.
+- STOP if S_class at the longest context (2048) is < 30%.
+- Weak (report as MAYBE, no policy stage) if 30% <= S_class < 50%.
+- Strong if S_class >= 50%: run the policy stage.
+- Decision structure exists if S_class - S_uniform >= 10 pp or S_prompt - S_class >= 15 pp.
+
+**Policy stage (only if strong).** Cheap features recorded for every P+D during the run:
+|D| in tokens, lexical overlap (Jaccard of D tokens with the question and with the whole
+prefix), input-embedding cosine of D vs question / prefix, and step-0 drift of shared-prefix
+states at layers 2/4/8 (cost <= 1/4 of one forward). Each feature -> k via 4 quantile bins,
+leave-one-prompt-out, same tolerance. Report S_simple and S_class - S_simple. If a lexical
+or embedding feature alone closes the gap to within 5 pp, the decision problem is trivial
+and the systems contribution is weak; if only the drift feature closes it, or none does,
+that is the result.
+
+**number_edit (D_changing).** Gold recomputation is dropped (not derivable reliably). It is
+reported through agreement with full recompute and the stuck-on-old-answer rate, and enters
+the prompt oracle only.
+
+**Instrumentation change.** `StateRecorder.start_record` gains an optional `steps` set so
+only step 0 is stored at long context (memory). Default behaviour unchanged; Round 1 code
+paths unaffected.
+
+**Cost.** Per (prompt, ctx): 1 + 5 + 5x8 = 46 generations of 64 forwards. Forward time grows
+with sequence length (~0.05 s at 220 tokens, est. ~0.5 s at 2300). Estimated 45-60 GPU-hours
+for the full grid; split by prompt range and/or ctx across GPUs with `run_round2.sh`.
+
 ## 6. Deviations log
 
 - 2026-09-10: `run_pilot.py` crashed on CUDA at the first delta of q5 (`sims` tensor lived on

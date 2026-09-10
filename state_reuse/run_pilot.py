@@ -115,7 +115,7 @@ def main():
             out_new = generate(model, ids_new, recorder=rec, **gen_kw)
             rec.stop()
             traj_new = rec.traj
-            sims = cosine_drift(traj_old, traj_new, all_steps)  # [T, L+1, n_shared]
+            sims = cosine_drift(traj_old, traj_new, all_steps).cpu()  # [T, L+1, n_shared]
             text_new = decode_gen(tok, out_new["x"][0, ids_new.shape[1]:])
             pred_new = extract_pred(text_new)
             # distance of each shared position to the nearest changed position

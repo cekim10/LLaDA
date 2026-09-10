@@ -116,4 +116,8 @@ delta class; (b) compute saved vs L_shared/L_total with quality as color;
 
 ## 6. Deviations log
 
-(empty)
+- 2026-09-10: `run_pilot.py` crashed on CUDA at the first delta of q5 (`sims` tensor lived on
+  cuda, `.numpy()` failed; the CPU run never hit this). Fix: `.cpu()` on the drift tensor
+  before saving. No change to any computation or metric. Also found that q4 of the CPU run
+  was cut off mid-prompt (3 of 5 deltas), so q4 records/sims were deleted and Round 1
+  resumes from `START=4 N=46`.

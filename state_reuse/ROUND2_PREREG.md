@@ -186,3 +186,10 @@ for the full grid; split by prompt range and/or ctx across GPUs with `run_round2
   before saving. No change to any computation or metric. Also found that q4 of the CPU run
   was cut off mid-prompt (3 of 5 deltas), so q4 records/sims were deleted and Round 1
   resumes from `START=4 N=46`.
+- 2026-09-10 (A2, before any Round 2 data was inspected): the full grid (5 ctx x 8 k) was
+  started on 2 GPUs, found to need ~25 h per GPU, and stopped within the first prompts. Round 2
+  now runs the reduced grid ctx {0, 512, 2048} x k {8, 16, 24, 32} into `results/round2r`
+  (partial full-grid records in `results/round2` are discarded, not merged). Reason: cost only.
+  Decision rules are unchanged; the class/prompt oracles are simply resolved at 8-layer
+  granularity, which can only under-estimate S_oracle. ctx 256/1024 may be appended later
+  with the same k grid.

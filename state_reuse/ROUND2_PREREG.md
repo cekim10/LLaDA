@@ -38,6 +38,11 @@ agreement 1.0 (or equal to the run-to-run determinism floor) for k in {4,16,32}
 when a request's own trajectory is injected. If it does not, Round 1 numbers are
 not interpretable and instrumentation is fixed first.
 
+Gate result (2026-09-10, elves-01 GPU, 64 steps / gen 128): run-to-run determinism 1.000;
+self-inject k=4/16/32 token agreement 1.000; recorded states bit-identical across runs.
+**Passed.** The k=4 divergence in Round 1 is therefore a real effect of the old request's
+state, not an instrumentation artifact.
+
 Known status: prompts 0-4 were computed on CPU (torch cu13 build vs CUDA 12.9
 driver). Results are valid; remaining 45 prompts resume with `START=5 N=45` after
 installing the cu128 torch build.

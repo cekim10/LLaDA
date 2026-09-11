@@ -90,20 +90,22 @@ for ctx in ctxs:
             f"{t} {np.mean([cond[k]['ours']['same_as_old'] for k in cells(ctx,[t],positions)]):.2f}/"
             f"{np.mean([full[k]['same_as_old'] for k in cells(ctx,[t],positions)]):.2f}" for t in TYPES if cells(ctx, [t], positions)))
 
-    # drift pre vs post per layer
-    L.append("\n### Step-0 drift (1 - cos) at mapped positions, mean over cells: pre-mutation vs post-mutation (relocated) positions\n")
-    L.append("| mutation | pre L8 | post L8 | pre L16 | post L16 | pre L32 | post L32 |")
+    # drift: relocated (shifted) vs unshifted mapped tokens, from the sims files (exact per-token split)
+    import glob, re
+    L.append("\n### Step-0 drift (1 - cos) at mapped positions: relocated (old pos != new pos) vs unshifted tokens, cells averaged\n")
+    L.append("| mutation | set | cells | L8 | L16 | L24 | L32 |")
     L.append("|---|---|---|---|---|---|---|")
     drift_fig = {}
     for t in TYPES:
-        keys = cells(ctx, [t], positions)
-        pre = [full[k]["drift0"]["pre"] for k in keys if full[k]["drift0"]["pre"]]
-        post = [full[k]["drift0"]["post"] for k in keys if full[k]["drift0"]["post"]]
-        if not keys:
-            continue
-        pre = np.mean(pre, 0) if pre else np.full(33, np.nan); post = np.mean(post, 0) if post else np.full(33, np.nan)
-        drift_fig[t] = (pre, post)
-        L.append(f"| {t} | {pre[8]:.4f} | {post[8]:.4f} | {pre[16]:.4f} | {post[16]:.4f} | {pre[32]:.4f} | {post[32]:.4f} |")
+        acc = {"unshifted": [], "relocated": []}
+        for f in glob.glob(os.path.join(out, f"sims0_q*_c{ctx}_{t}_p*.npz")):
+            z = np.load(f); s_ = z["sims0"].astype(np.float32); sh = z["old_idx"] != z["new_idx"]
+            if (~sh).any(): acc["unshifted"].append(1 - s_[:, ~sh].mean(1))
+            if sh.any(): acc["relocated"].append(1 - s_[:, sh].mean(1))
+        for name, v in acc.items():
+            if v:
+                m = np.mean(v, 0); drift_fig[(t, name)] = m
+                L.append(f"| {t} | {name} | {len(v)} | {m[8]:.4f} | {m[16]:.4f} | {m[24]:.4f} | {m[32]:.4f} |")
 
     # figures
     fig, ax = plt.subplots(1, 3, figsize=(17, 4.5))
@@ -117,9 +119,9 @@ for ctx in ctxs:
         ax[1].plot(ps, [curve[t][p][3] for p in ps], "--x", label=f"prefix {t}")
     ax[0].set_xlabel("mutation position (% of history)"); ax[0].set_ylabel("% compute saved (FLOP proxy)"); ax[0].set_title("reuse vs mutation position"); ax[0].legend(fontsize=7)
     ax[1].set_xlabel("mutation position (% of history)"); ax[1].set_ylabel("accuracy loss vs full (pp)"); ax[1].axhline(-5, color="r", ls="--"); ax[1].set_title("quality vs mutation position"); ax[1].legend(fontsize=7)
-    for t, (pre, post) in drift_fig.items():
-        ax[2].plot(range(33), pre, "-", label=f"{t} pre"); ax[2].plot(range(33), post, "--", label=f"{t} post/relocated")
-    ax[2].set_xlabel("layer"); ax[2].set_ylabel("1 - cos (step 0)"); ax[2].set_title("state drift: pre vs post mutation"); ax[2].legend(fontsize=7)
+    for (t, name), m in drift_fig.items():
+        ax[2].plot(range(33), m, "-" if name == "unshifted" else "--", label=f"{t} {name}")
+    ax[2].set_xlabel("layer"); ax[2].set_ylabel("1 - cos (step 0)"); ax[2].set_title("state drift: unshifted vs relocated tokens"); ax[2].legend(fontsize=7)
     fig.suptitle(f"Round 3, ctx {ctx}"); fig.tight_layout()
     fig.savefig(os.path.join(out, f"fig_r3_ctx{ctx}.png"), dpi=130); plt.close(fig)
 

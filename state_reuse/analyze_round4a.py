@@ -63,9 +63,10 @@ for ps, label in ([positions, "pooled over p"],) + tuple(([p], f"p = {p}%") for 
         if not ks:
             continue
         safe, loss, accf, accw, ng, st, sf, S = stats(ks, "ours")
-        safe_p, *_ = stats(ks, "prefix") if all("prefix" in cond[k] for k in ks) else (("nan",),)
-        Sp = np.mean([cond[k]["prefix"]["compute_saved"] for k in ks if "prefix" in cond[k]]) if any("prefix" in cond[k] for k in ks) else np.nan
-        L.append(f"| {c} | {len(ks)} | {fmt(safe)} | {fmt(safe_p) if isinstance(safe_p, tuple) else safe_p} | {accf:.2f} | {accw:.2f} | {fmt(loss, True)} | {ng} | {st:.2f} | {sf:.2f} | {S:.2f} | {Sp:.2f} |")
+        kp = [k for k in ks if "prefix" in cond[k]]  # a cell can lack prefix while the run is still writing
+        safe_p = stats(kp, "prefix")[0] if kp else (np.nan, np.nan, np.nan)
+        Sp = np.mean([cond[k]["prefix"]["compute_saved"] for k in kp]) if kp else np.nan
+        L.append(f"| {c} | {len(ks)} | {fmt(safe)} | {fmt(safe_p)} | {accf:.2f} | {accw:.2f} | {fmt(loss, True)} | {ng} | {st:.2f} | {sf:.2f} | {S:.2f} | {Sp:.2f} |")
 
 # ---- readings
 L.append("\n## Preregistered reading\n")
@@ -114,7 +115,8 @@ for i, which in enumerate(("ours", "prefix")):
     vals = []
     for c in CONDS:
         ks = keys_for(c, positions)
-        vals.append(np.mean([cond[k][which]["agree_full"] for k in ks if which in cond[k]]) if ks else np.nan)
+        v_ = [cond[k][which]["agree_full"] for k in ks if which in cond[k]]
+        vals.append(np.mean(v_) if v_ else np.nan)
     ax[0].bar(xs + (i - 0.5) * 0.35, vals, 0.35, label=which)
 ax[0].set_xticks(xs); ax[0].set_xticklabels(CONDS, rotation=15); ax[0].set_ylabel("safe rate (answer == full)"); ax[0].legend(); ax[0].set_ylim(0, 1)
 vals = []

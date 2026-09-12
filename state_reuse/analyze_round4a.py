@@ -90,8 +90,10 @@ if kd and ko:
             _, l_, *_r = stats(ks, "ours")
             ctrl_ok[c] = (l_[0] >= -5 and l_[1] >= -10, l_)
             L.append(f"- loss({c}) = {fmt(l_, True)} pp -> {'ok' if ctrl_ok[c][0] else 'FAIL'}")
-    A = (diff >= -0.10) and (stale_o <= stale_f + 0.10) and (np.isnan(loss_dep[0]) or loss_dep[0] >= -5)
-    B = (diff <= -0.20) and (hi < 0) and all(v[0] for v in ctrl_ok.values())
+    controls_pass = all(v[0] for v in ctrl_ok.values())
+    # per ROUND4A_PREREG.md: a control condition failing its loss bound is reading C regardless of dep_number
+    A = controls_pass and (diff >= -0.10) and (stale_o <= stale_f + 0.10) and (np.isnan(loss_dep[0]) or loss_dep[0] >= -5)
+    B = controls_pass and (diff <= -0.20) and (hi < 0)
     move_fail = ("dep_move" in ctrl_ok) and (not ctrl_ok["dep_move"][0]) and ctrl_ok.get("ctrl_other", (False,))[0]
     reading = "A (broadly tolerant)" if A else "B (dependency-sensitive boundary)" if B else "C (unstructured)"
     L.append(f"\n**Reading: {reading}**" + ("  -- dep_move FAILED while ctrl_other passed: Round 3 promotion retracted" if move_fail else ""))

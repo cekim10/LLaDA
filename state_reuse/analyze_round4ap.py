@@ -78,6 +78,15 @@ if ks:
              + ("" if verdict != "INCONCLUSIVE" else " (primary gate inconclusive: not interpreted)"))
     L.append(f"- diagnostic dep_fresh_num = {fmt(lf)} (not used in decisions)")
 
+# paired differences between conditions (same cells), pooled
+L.append("\n## Paired differences between conditions (pp, pooled)\n")
+ks_all = [k for k in full if all(c in cond.get(k, {}) for c in CONDS)]
+for a, b in (("identity", "all_but_dep"), ("identity", "dep_only"), ("dep_only", "all_but_dep"), ("identity", "dep_fresh_num")):
+    d = boot([100 * (int(cond[k][a]["correct"]) - int(cond[k][b]["correct"])) for k in ks_all])
+    L.append(f"- {a} - {b}: {fmt(d)}")
+L.append(f"\nFormat diagnostics: outputs at >= 250 gen tokens: full {np.mean([r['n_gen'] >= 250 for r in full.values()]):.2f}; "
+         + ", ".join(f"{c} {np.mean([cond[k][c]['n_gen'] >= 250 for k in ks_all]):.2f}" for c in CONDS))
+
 fig, ax = plt.subplots(1, 2, figsize=(11, 4.2))
 for i, p in enumerate(positions):
     vals = [loss(c, [p])[0][0] for c in CONDS]

@@ -49,6 +49,8 @@ def main():
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "results", "round4ap"))
     ap.add_argument("--device", default=None)
     ap.add_argument("--dry_run", action="store_true")
+    ap.add_argument("--log_attn", action="store_true", help="passively log step-0 canvas->context attention mass (extra forward per cell)")
+    ap.add_argument("--attn_layers", default="4,8,12,16,20,24,28,31")
     args = ap.parse_args()
 
     from transformers import AutoTokenizer
@@ -66,7 +68,9 @@ def main():
         import torch
         from transformers import AutoModel
         from instrument import StateRecorder
-        from sampler import generate
+        from sampler import generate, MASK_ID
+        from attn_probe import AttnProbe
+        attn_layers = [int(x) for x in args.attn_layers.split(",") if x]
         device = args.device or ("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
         store_device = "cuda" if device == "cuda" else "cpu"
         print(f"device={device} store={store_device}", flush=True)
@@ -119,6 +123,25 @@ def main():
             emit(dict(qid=qid, kind="full", **info, gold=gold, pred=pred_full, correct=(pred_full == gold),
                       n_gen=n_gen_full, text=text_full))
             print(f"[q{qid} p{p}] full: pred={pred_full} gold={gold} n_gen={n_gen_full} ({time.time()-t_start:.0f}s)", flush=True)
+
+            if args.log_attn:
+                # step-0 (all-mask canvas) attention mass from canvas rows onto every context position, selected layers
+                x0 = torch.full((1, P + args.gen_length), MASK_ID, dtype=torch.long, device=device)
+                x0[0, :P] = ids[0]
+                probe = AttnProbe(model, attn_layers, query_start=P)
+                with torch.no_grad():
+                    model(x0)
+                probe.remove()
+                mass = torch.stack([probe.mass[l] for l in attn_layers])  # [n_layers, P+gen]
+                ctx_mass = mass[:, :P]
+                dep_mass = ctx_mass[:, span[0]:span[1]].sum(1)
+                np.savez_compressed(os.path.join(args.out, f"attn0_q{qid}_p{p}.npz"), layers=np.array(attn_layers),
+                                    mass=mass.numpy().astype(np.float32), dep_span=np.array(span), P=P)
+                emit(dict(qid=qid, kind="attn0", **info, layers=attn_layers,
+                          dep_mass=dep_mass.tolist(), ctx_mass=ctx_mass.sum(1).tolist(),
+                          dep_share_of_ctx=(dep_mass / ctx_mass.sum(1)).tolist(),
+                          dep_frac_tokens=len(dep_idx) / P))
+                print(f"    attn0 dep share of context mass by layer: {[round(float(v),3) for v in (dep_mass/ctx_mass.sum(1))]} (token frac {len(dep_idx)/P:.3f})", flush=True)
 
             for cond in conds:
                 idx = sets[cond]

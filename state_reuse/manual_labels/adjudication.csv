@@ -1,0 +1,48 @@
+item_id,manual_label,confidence,dependency_evidence,notes
+c92a89ebfc1af1ed,history_dependent,high,"The edit requires the prior _get_deps_info implementation and earlier nested try/except changes, which are absent from the latest traceback.",
+458ff922f24ea840,bookkeeping,high,,Exact repeated malformed edit after explicit indentation-error feedback; non-substantive repair retry.
+fc3f30d90b29baae,ambiguous,low,,"Substantive but destructive/incorrect full-file edit; latest feedback largely contains the attempted code, so old-history necessity is not clear."
+2653e84ef06df427,ambiguous,low,,"Substantive but likely misplaced edit; the latest feedback contains the relevant boundary, so no clear old-history dependency can be established."
+489d3e30c79b90f3,history_dependent,high,"The full replacement relies on the earlier connect implementation and prior multi-project edit plan, while the latest feedback shows only a partial function and lint errors.",
+0ee3a4df0ec9bae9,ambiguous,high,,"Substantive but semantically invalid edit; the latest traceback exposes the exact line, and old-history necessity is not established."
+8bbc46dd78ba739e,ambiguous,high,,"The edit is substantive but targets the currently open input.nex rather than reproduce.py; this is an incorrect action loop, not merely a malformed wrapper."
+a4bb8f509fb5aece,bookkeeping,high,,The proposed replacement is effectively identical to the latest displayed function and introduces no substantive change.
+dcedb239436ea748,bookkeeping,high,,Exact repeated wrong-line edit after explicit rejection; a malformed repair retry with no new substantive action.
+348e09f083a14622,history_dependent,high,"The decision to add exact to packaging.Version depends on the earlier failing test and prior distinction between Version and ScmVersion, absent from the latest search result alone.",
+aea9ada56ac2f762,bookkeeping,high,,Another near-identical malformed docstring edit after explicit syntax-error feedback; it is a formatting repair retry without a valid substantive change.
+e837c69bc60630b2,history_dependent,high,"The full replacement relies on the prior reproduction script imports and earlier inspection of GermlineDonor's constructor, neither contained in the latest traceback.",
+0b2882fa23bafbf8,ambiguous,low,,"Substantive but likely duplicating most of _cloud_status by replacing only lines 41:52; the latest file view supplies the visible rationale, so old-history necessity is unclear."
+f69d8171f45efcf4,bookkeeping,high,,The latest observation already displays the complete method through EOF; repeating scroll_down is a non-substantive navigation loop.
+6f3d3fe902ae5a31,safe,high,,
+1c0b40c08e044139,history_dependent,high,"The target dialect.py parse method at line 441 and the plan to return there come from earlier navigation, not the latest parser.py view.",
+2a426d8cd23c9141,bookkeeping,high,,Repeatedly opens the file that is already open; this is a navigation/no-op turn rather than substantive reasoning.
+c236fc7ad94e291d,bookkeeping,high,,"The URLPath class definition is already visible in the latest observation, so searching for it again is a redundant navigation step."
+4c1c27139feb8768,bookkeeping,high,,"The latest view already begins at line 1, so another scroll_up cannot reveal the later _procfile definition and is a non-substantive navigation error."
+53b4f4c60951acf3,bookkeeping,high,,This repeats an earlier directory listing in the same failed Wallet-class search loop without advancing the substantive task.
+4169289ec8f2a95d,history_dependent,high,The specific plan to chase a query-method implementation into algebra.py comes from the earlier search chain; the latest file header and task do not establish that target.,
+7f9e35e4ccdf32a0,bookkeeping,high,,This is another turn in the repeated parser.py/dialect.py navigation loop and adds no substantive inspection or reasoning.
+1ec23609f16a2409,bookkeeping,high,,This is an exact continuation of a long malformed rm/unlink retry loop and is purely bookkeeping/error recovery.
+0439f93ac5c25b05,bookkeeping,high,,"This exactly repeats the same malformed find command after the same error, so it is bookkeeping/error-loop behavior."
+17232d837a90088a,bookkeeping,high,,"This is another exact malformed find retry after the identical error, with no substantive reasoning."
+93b82a652fb20d34,bookkeeping,high,,"This is the same malformed find command repeated after the identical shell error, so it is bookkeeping/error-loop behavior."
+fd30f03fa12e241d,bookkeeping,high,,This is an exact repeat of the same malformed find command in a long error loop and is bookkeeping.
+763c97208cc95e9b,bookkeeping,high,,"This alternates the same malformed rm and unlink commands after repeated failures, so it is bookkeeping/error recovery."
+520cc61c273ff8ac,bookkeeping,high,,This continues the same malformed cleanup-command loop and is bookkeeping.
+cd0128773f9bafe3,bookkeeping,high,,"This is another exact malformed find retry in the same long error loop, so it is bookkeeping."
+99647ba505586c59,bookkeeping,high,,"This is another alternating malformed cleanup retry in the same error loop, so it is bookkeeping."
+8faa284de2624644,bookkeeping,high,,This repeats the identical malformed find command after the same error and is bookkeeping.
+691413362b47f10d,bookkeeping,high,,This is another identical malformed find retry after the same failure and is bookkeeping.
+ccc62090e6fce525,bookkeeping,high,,"This is the same malformed find command repeated after the same shell error, so it is bookkeeping."
+97017ba393ba72e3,bookkeeping,high,,This remains the same malformed rm/unlink cleanup loop and is bookkeeping.
+05daa3546c40fe17,bookkeeping,high,,This is another exact malformed find retry in the same error loop and is bookkeeping.
+0bd8e38d9d76ae00,bookkeeping,high,,This is another identical malformed find retry after the same failure and is bookkeeping.
+4c6f80c4694c69c6,bookkeeping,high,,"It repeats the identical malformed cleanup command immediately after its failure, so this is bookkeeping."
+b162ed94e2da7fea,bookkeeping,high,,This exactly repeats the malformed find command after the same error and is bookkeeping.
+f8e73b323ed615fa,bookkeeping,high,,This is an exact repeat of the malformed find command after the same error and is bookkeeping.
+cf7c3c17163868da,bookkeeping,high,,Exact repeat of the same malformed find. command after the identical shell error; non-substantive retry loop.
+43140ad378638800,bookkeeping,high,,Alternates the same malformed rm./unlink. cleanup commands after identical failures; non-substantive retry loop.
+93620fb09a013811,history_dependent,high,The prior _get_keys edits to jose/jws.py and the test_get_keys.py run establish that the fix is implemented and verified; the latest observation only reports that an rm produced no output.,"submit is a substantive terminal action, not a malformed or formatting-only turn, so it is not bookkeeping; the decision to submit is justified only by old history."
+180df9ae795c216a,history_dependent,high,The earlier creation of reproduce.py and the just-applied _compile edit establish both the verification script and what is being verified; the latest observation is an unrelated region of funcutils.py and never names reproduce.py.,"Per rubric, an action whose target comes from earlier work is history-dependent even though the command itself is predictable."
+962505c63e5346dc,history_dependent,high,The existence of reproduce.py and the pending get_io try/except repair come from earlier turns; the latest observation shows the io list region of neo/io/__init__.py and does not name the script.,Same reasoning as the other post-edit verification turns.
+9ffaf5edfeffd4ef,history_dependent,high,The reproduce.py script and the edit at templates.py line 629 (Template(default=None)) come only from old history; the latest observation shows lines 537-568 and does not contain the edited line or the script name.,Same reasoning as the other post-edit verification turns.
+39469f2fb3fc79dd,history_dependent,high,The reproduce.py script and the intended get_io restructuring come only from old history; the latest observation shows the iolist/io_by_extension region and does not name the script.,Same reasoning as the other post-edit verification turns.

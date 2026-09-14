@@ -1,0 +1,251 @@
+item_id,manual_label,confidence,dependency_evidence,notes
+5301cac8afe500ac,history_dependent,high,Prior HTTP 400 used placeholder Knack credentials and the earlier plan selected get_metadata for diagnosis.,
+5cd028e94a989916,safe,high,,
+93620fb09a013811,history_dependent,high,Prior history records the _get_keys changes successful tests and cleanup needed to justify submission.,
+f6a4b84945cc1a5b,safe,high,,
+17232d837a90088a,ambiguous,low,,Repeated malformed find command after explicit failure.
+24f13539bb6f2881,safe,high,,
+5dae18718340ee40,history_dependent,high,Prior history says test_logging.py was created in the repository root and already removed there.,
+8ec8ec84cb0ebf5d,history_dependent,high,Prior HTTP 400 used placeholder Knack credentials and the earlier plan selected get_metadata for diagnosis.,
+19b168ff7f77c398,safe,high,,
+e96da507a1180065,history_dependent,high,Earlier inspection established that parse_procfile in honcho/environ.py was the validation target.,
+d3924adb110cbc0d,safe,high,,
+989df22c43a7b587,safe,high,,
+99647ba505586c59,ambiguous,low,,Repeated malformed unlink command after explicit failures.
+aadc681f95ea5a67,history_dependent,high,Prior source inspection supplied the existing DotmeshClient construction and state lines used by the replacement.,
+53b4f4c60951acf3,safe,high,,
+93b82a652fb20d34,ambiguous,low,,Repeated malformed find command after explicit failure.
+9c5de7ce6af3e281,safe,high,,
+b31b99ce8e4f9029,history_dependent,high,Earlier history created test_capture.py and recorded its NoneType failure which identifies the rerun target.,
+4e386809d9add7fd,safe,high,,
+8faa284de2624644,ambiguous,low,,Repeated malformed find command after explicit failure.
+a986df882b50b121,ambiguous,low,,Repeated malformed find command after explicit failure.
+2653e84ef06df427,ambiguous,low,,The insertion targets the wrong line even though the latest view shows a new function there.
+35bd6a6e420e5cc9,history_dependent,high,Earlier history created test_capture.py and recorded its failure which identifies the rerun target.,
+b21b60425ceca7f3,ambiguous,low,,Repeated malformed find command after explicit failure.
+4dfaee4c342de704,history_dependent,high,Prior history identified _get_cfp in src/pystow/config_api.py as the configuration loading logic.,
+68cfa3d1b64280e2,ambiguous,low,,The src directory choice is unsupported after a failed third party import.
+12b6521967da0fd5,history_dependent,high,Prior history created reproduce.py and established it was temporary after successful YAML verification.,
+ecf8adda02a70277,safe,high,,
+627885aaaa59167a,safe,high,,
+f891d7afa41ea713,history_dependent,high,Earlier full gast.py inspection supplied the _nodes entries across the broad rewrite range.,
+fed8e7068d95011f,safe,high,,
+bc2c0d09f1631f63,ambiguous,low,,Repeated malformed find command after explicit failure.
+180df9ae795c216a,history_dependent,high,Prior history created reproduce.py for the annotations bug and the latest observation only shows a code edit result.,
+6a320d7919b5c804,safe,high,,
+b05e404d96ce6aed,safe,high,,
+a4011bf97f4fe70c,safe,high,,
+0e946faa6be9d201,safe,high,,
+97017ba393ba72e3,ambiguous,low,,Repeated malformed rm command after explicit failure.
+520cc61c273ff8ac,ambiguous,low,,Repeated malformed unlink command after explicit failure.
+77a4ae69d26eb485,history_dependent,high,Earlier planning selected _procfile validation as the target while the latest view only shows the file top.,
+67f36ca35b0ffbea,history_dependent,high,Prior history created the multiline SQL reproduce.py and the latest only reports the library edit.,
+2ac376908a8a8754,safe,high,,
+40791fcdd308c555,safe,high,,
+b162ed94e2da7fea,ambiguous,low,,Repeated malformed find command after explicit failure.
+23dbe1ddfa0a1de4,safe,high,,
+720bd3c34367c53c,safe,high,,
+763c97208cc95e9b,ambiguous,low,,Repeated malformed rm command after explicit failure.
+b3933cf537a87d96,safe,high,,
+75290d0583997177,safe,high,,
+939a5b156ed4fe98,ambiguous,low,,Repeated malformed find command after explicit failure.
+0439f93ac5c25b05,ambiguous,low,,Repeated malformed find command after explicit failure.
+bfd8a73633b4c1ab,history_dependent,high,Prior history created test_capture.py and recorded its failure which identifies the rerun target.,
+fe3057015f6fa941,safe,high,,
+8b0254c9c4b5de45,safe,high,,
+26fa29073bdcebaa,safe,high,,
+fc6b896fd1edfd02,safe,high,,
+dac80fccb2a9bed4,safe,high,,
+1c16f7ede1a760b6,safe,high,,
+f8e73b323ed615fa,ambiguous,low,,Repeated malformed find command after explicit failure.
+7e5efe57be50275e,ambiguous,low,,Repeated malformed unlink command after explicit failure.
+b2dd82537fc8768d,safe,high,,
+e837c69bc60630b2,ambiguous,low,,The replacement still omits the bio_samples argument required by the latest failure.
+8309835fc0c0a576,safe,high,,
+7a95ba5cd0a3037b,history_dependent,high,Earlier full gast.py inspection supplied the _nodes entries used by the broad rewrite.,
+82b9a91ff4013a31,ambiguous,low,,Repeated malformed find command after explicit failure.
+e56d56f49babd31e,history_dependent,high,Prior planning selected get_metadata and an earlier scroll located it near line 246 while the latest shows only the file top.,
+64abf52edfc182da,ambiguous,low,,The generation repeats the same invalid TypedDict isinstance approach after its TypeError.
+0a87f8c89d2fdada,history_dependent,high,Earlier history selected from_der parsing and located its PKCS8 section while the latest had scrolled past it.,
+962505c63e5346dc,history_dependent,high,Prior history created reproduce.py for the nonexistent file get_io case and the latest only shows the library edit.,
+b873683dab8a848e,history_dependent,high,Prior planning selected make_absolute_url and URLPath as the reverse proxy target while the latest shows only the file top.,
+161a8a65638a793c,history_dependent,high,Earlier history identified _get_cfp in config_api.py as the loader target while the latest only reports a test failure.,
+9f85e0c69afdc273,ambiguous,low,,The edit removes a line but leaves split_mon_info undefined.
+11f3d4b852b89520,history_dependent,high,Prior history created reproduce.py for the converter cases and the latest only shows a library edit.,
+3391d120237bf848,history_dependent,high,Prior search and planning asserted that the next relevant you occurrence was at line 222 while the latest view does not show it.,
+99c7da483848c51c,ambiguous,low,,The generation repeats an incorrect duplicate function edit.
+cf7c3c17163868da,ambiguous,low,,Repeated malformed find command after explicit failure.
+821642156635c7f5,history_dependent,high,Prior history recorded the failed Sample import and selected that class search while the latest only shows the models file.,
+ac9ef3978aa1a5af,history_dependent,high,Prior _get_keys implementation and the chosen four scenarios supply the full test body for the blank file.,
+26bc6551808dc2ea,history_dependent,high,Prior history identifies reproduce.py line 11 as the intended target while the latest has input.nex open.,
+68a2d2f431f74fb4,safe,high,,
+e9294ab30d89f939,safe,high,,
+0b2882fa23bafbf8,history_dependent,high,Prior modifications established the JSON output plan and complete cloud status body while the latest shows only part of the file.,
+3c55aecb15cccbd9,safe,high,,
+825f6f00db2ddbfb,ambiguous,low,,The generation repeats the same syntax invalid duplicate function edit.
+9c7f47338fd20721,history_dependent,high,Earlier repository search identified tests/test_format.py while the latest only shows a draft04 edit.,
+0bd8e38d9d76ae00,ambiguous,low,,Repeated malformed find command after explicit failure.
+9bed8b2c70c33eaf,history_dependent,high,Earlier history created reproduce.py for the pending pkl path while the latest only shows the library edit.,
+1057d11df2abea42,safe,high,,
+05812aa5d71fbe3a,safe,high,,
+00194d1f7a3d79d4,history_dependent,high,Prior planning and scrolling identified get_metadata below line 246 while the latest only shows the middle of api.py.,
+6eda3dabc4d8ca06,safe,low,,Reruns an unchanged script after a no output result.
+c5ad4d0752e685ff,ambiguous,low,,Repeated malformed find command after explicit failure.
+02aab74d5cbb77b9,safe,high,,
+94b39a6953b85d4a,safe,high,,
+b7767a39f637ae09,safe,high,,
+e3a29623275c1f40,ambiguous,low,,Repeated malformed rm command after explicit failure.
+f4c47b79d7dc4a50,safe,high,,
+8ef2731e47e5afb6,safe,high,,
+a4bb8f509fb5aece,bookkeeping,high,,The proposed replacement is semantically identical to the current method.
+c92a89ebfc1af1ed,history_dependent,high,Earlier _get_deps_info inspection supplies the variables and control flow used by the edit while the latest only shows an import traceback.,
+6f3d3fe902ae5a31,safe,high,,
+84046b014de2bcb5,safe,high,,
+53a59769e8086431,safe,high,,
+68a0d17422e5f74b,safe,high,,
+39dae728a60523fa,history_dependent,high,Prior history established parse_procfile validation behavior and the expected error text used to author the blank test.,
+1be37e822e0afdf0,safe,high,,
+b8db2241b65ef01c,history_dependent,high,Earlier app.py inspection supplied the App keyword only constructor signature while the latest only shows the wrong call.,
+8ca74b0e4f75fd5a,safe,high,,
+618a8696bd0b3faf,history_dependent,high,Prior version.py inspection supplied the existing import block being replaced while the latest only shows a search result.,
+8f2f393ddf4f8827,safe,high,,
+4169289ec8f2a95d,safe,high,,
+458ff922f24ea840,ambiguous,low,,The generation repeats an indentation breaking edit and drops the required loop.
+2483f3f1805a06ca,safe,low,,Reruns an unchanged script after a no output result.
+a332561f9ac8cceb,safe,high,,
+a7d71d81ee26717b,safe,high,,
+cb66ad461ed2405e,history_dependent,high,Prior history explicitly selected datalad.distribution.dataset as the correct Dataset import while the latest only shows the current wrong import.,
+4456784cf25a67cc,ambiguous,low,,The partial signature edit leaves project references and the reported kwards issue unexplained.
+8e196dc33d4124d6,safe,high,,
+00be677cb52dea4c,safe,high,,
+7e61186b087734a8,safe,high,,
+ff51aa73782a572b,safe,high,,
+ee5fb0c3aecd2f12,safe,high,,
+5a995523d4147953,history_dependent,high,Prior history created the multiline SQL reproduce.py while the latest only shows a debug code edit.,
+dc7e80fb458d8e28,safe,high,,
+28cd345923102992,safe,high,,
+d19f038ec50f2bef,history_dependent,high,Prior planning selected __init_subclass__ for field index handling while the latest search results do not show its body.,
+a267badc2167abf5,ambiguous,low,,Repeated malformed find command after explicit failure.
+1641cb0bbc4428ab,ambiguous,low,,Repeated malformed find command after explicit failure.
+5f952a29faf8f1a8,history_dependent,high,Prior history identified coerce_view in remerkleable/complex.py as the target after a mistaken goto.,
+3a0e3382e53a9c54,safe,high,,
+1b932c0295bcd9f4,ambiguous,low,,The correction introduces a nested try that is unsupported by the latest original structure.
+1ec23609f16a2409,ambiguous,low,,Repeated malformed rm command after explicit failure.
+66b947630d7d9ee8,ambiguous,low,,Repeated malformed find command after explicit failure.
+22bbacf0a1c5e2a5,safe,high,,
+429b598ba0485a32,safe,low,,Runs the heavily duplicated test script shown by the latest observation.
+ee1880d93f76b7b7,safe,high,,
+e21711064c5b9646,bookkeeping,high,,The proposed edit is identical to the current lines and does not assign http_headers.
+0ff932367ebe1a94,safe,high,,
+fc3f30d90b29baae,history_dependent,high,Prior attempts supplied the testpypi alias implementation and Settings scaffold used in the broad rewrite.,
+489d3e30c79b90f3,history_dependent,high,Prior full connect edit supplied DotmeshClient construction and state lines while the latest only shows part of the original block.,
+2d942dd1dfa07c40,history_dependent,high,Prior history established parse_procfile validation behavior and its expected ValueError used to author the blank test.,
+b94e35c09f22ccef,history_dependent,high,Earlier document.py inspection located the final group check near line 293 while the latest output lacks the edit location and code.,
+091c647779cecb16,history_dependent,high,Prior planning selected release_branch_semver_version at line 271 while the latest shows only the first hundred lines.,
+756212830dbea9be,safe,high,,
+d650dc3f7938b701,ambiguous,low,,Repeated malformed unlink command after explicit failure.
+28245ba56778864e,safe,high,,
+cd0128773f9bafe3,ambiguous,low,,Repeated malformed find command after explicit failure.
+dcedb239436ea748,ambiguous,low,,The generation repeats the identical wrong line edit after the latest location error.
+62e15e17d566a10d,bookkeeping,high,,The response contains multiple commands despite the one command interface.
+b3d2ad54950e6a22,history_dependent,high,Prior failed edit identified reproduce.py as the intended file and supplied the BaseSettings replacement while the latest has a library file open.,
+1cfa3faf90886e59,safe,high,,
+076f2fe5b44df89f,safe,high,,
+e562b8969dcea6bb,ambiguous,low,,Repeated malformed find command after explicit failure.
+1ed5d648e25bd79b,safe,high,,
+26e9753ae425df9b,safe,high,,
+1af91c19ae4e51e5,safe,high,,
+038cb4201eb3c5b6,safe,high,,
+205c5340f705112b,history_dependent,high,Prior history records the decorator fix and successful test while the latest only reports cleanup success.,
+432da64b50d9a744,safe,high,,
+47050d54fbee7088,ambiguous,low,,Repeated malformed find command after explicit failure.
+aacc471bcc00289f,history_dependent,high,Prior history records the validation change and successful temporary test needed to decide its removal.,
+aea9ada56ac2f762,safe,high,,
+0fe10a06b40d29cc,safe,high,,
+82f3e522c1caf81c,ambiguous,low,,Repeated malformed find command after explicit failure.
+9ebd64388dad2da7,safe,high,,
+7f9e35e4ccdf32a0,safe,high,,
+6ffc6babaceb6643,safe,high,,
+68d854314afc77c6,safe,high,,
+c236fc7ad94e291d,safe,high,,
+09fb9d8a2a82ed81,ambiguous,low,,Repeated malformed rm command after explicit failure.
+691413362b47f10d,ambiguous,low,,Repeated malformed find command after explicit failure.
+6e016496d613ecd5,ambiguous,low,,Repeated malformed find command after explicit failure.
+58477040b5ff2990,history_dependent,high,Prior history records the datetime format fix successful tests and temporary file cleanup needed to justify submission.,
+4c1c27139feb8768,history_dependent,high,Prior history selected _procfile validation for reinspection while the latest only shows the top of command.py.,
+ed745793b56a7b5b,history_dependent,high,Prior edits defined the extension handling block and get_io context used by this corrective edit while the latest only reports a failure.,
+d2d0d742eb38d839,safe,high,,
+e0ce9932f7354838,safe,high,,
+94fbf349734ee685,safe,high,,
+f2f44716f2784b83,history_dependent,high,Prior history created reproduce.py for the nested datetime case and established it as a temporary verification file.,
+b157aa5c98902fdd,safe,high,,
+ed9f382410178f45,safe,high,,
+a68916e981d072cd,ambiguous,low,,The generation repeats a broad syntax breaking Config replacement after the latest explicit failure.
+7483715c49213f97,history_dependent,high,Prior history records the parse_procfile change and successful temporary test needed to decide its removal.,
+05daa3546c40fe17,ambiguous,low,,Repeated malformed find command after explicit failure.
+744a197792f50969,safe,high,,
+d51dafd0c11ac389,history_dependent,high,Prior history establishes reproduce.py as the intended file after repeated accidental edits to input.nex.,
+45717a6981e67dd7,safe,high,,
+0514483f5d97203c,safe,high,,
+ddf718a7a4803377,safe,high,,
+2a426d8cd23c9141,history_dependent,high,Prior credential failure and debugging plan selected get_metadata even though the task concerns equation formatting.,
+8bbc46dd78ba739e,ambiguous,low,,The generation again edits the currently open input file despite recognizing reproduce.py as the target.
+ba1491316f577cc4,bookkeeping,high,,The response is a malformed multi command sequence rather than one executable action.
+483b189e95ba8895,ambiguous,low,,Repeated malformed find command after explicit failure.
+bb83aeba6e87cda7,safe,high,,
+39469f2fb3fc79dd,history_dependent,high,Prior history created reproduce.py for the nonexistent pkl case and supplied the get_io edit being rerun.,
+4c6f80c4694c69c6,ambiguous,low,,Repeated malformed rm command after explicit failure.
+4263e3d62b9bb12c,safe,high,,
+3e0d36c726f7ead0,history_dependent,high,Prior ast.py inspection and modification supplied the process_node_itself signature and expected result tuple for the blank test.,
+b120c4b0dda98e6d,history_dependent,high,Prior script setup established input.nex as the intended temporary input filename for the reproduction.,
+f69d8171f45efcf4,safe,high,,
+268911ebee21c376,ambiguous,low,,Repeated malformed unlink command after explicit failure.
+b63a1466315c22a5,ambiguous,low,,The generation repeats the same indentation breaking return insertion after an explicit failure.
+2f952c67ef34078b,ambiguous,low,,The generation repeats the same wrong line edit after the latest undefined name error.
+31035ca01ef8a1ad,safe,high,,
+21710ac1f75d7ce7,safe,high,,
+60fbb2f4da99a4c7,safe,high,,
+3ee865f43559dc43,history_dependent,high,Prior script setup established input.nex as the intended temporary input filename for the reproduction.,
+0deef1e320426e44,safe,high,,
+96fa1068da992ae4,safe,high,,
+1c0b40c08e044139,ambiguous,low,,The generation reverses direction to dialect.py despite the latest parser.py view and no clear diagnostic reason.
+7eac682e0b1e20bc,safe,high,,
+dc9af629bdea7850,safe,high,,
+26c96d0759c0d664,safe,high,,
+c9a9eb33e5085fa7,safe,high,,
+93e866cc5f11872d,safe,high,,
+0389f22d0e48036d,ambiguous,low,,The edit repeats the same wrong file mistake despite the latest saying input.nex already exists.
+d24a78cbea0df5a3,safe,high,,
+86f08014ca83915b,safe,high,,
+6765bf08a7811e2a,safe,high,,
+13934888e8fd5c31,safe,high,,
+534335158f52b9d4,safe,high,,
+fb5f1874bac3c2ad,safe,high,,
+ccc62090e6fce525,ambiguous,low,,Repeated malformed find command after explicit failure.
+43140ad378638800,ambiguous,low,,Repeated malformed unlink command after explicit failure.
+961729e172f52621,safe,high,,
+fd30f03fa12e241d,ambiguous,low,,Repeated malformed find command after explicit failure.
+394c3ebe6d120b6d,safe,high,,
+0ee3a4df0ec9bae9,ambiguous,low,,The generation repeats an invalid TypedDict isinstance approach after the latest TypeError.
+7ddf587aefacc1cd,history_dependent,high,Prior history established reproduce_script.py as the remaining temporary file after reproduce.md was removed.,
+d3ab2ea510a6461a,safe,high,,
+efc388ce2e67dae1,safe,high,,
+926c186fdc85f72c,safe,high,,
+348e09f083a14622,history_dependent,high,Prior test failure came from using a packaging Version object without the ScmVersion exact interface which motivates the new subclass.,
+2225693142a25410,history_dependent,high,Prior failed configuration test and _get_cfp investigation identify config_api.py as the file to reopen.,
+5ce9097e2f472a6e,history_dependent,high,Prior _get_cfp edits and failed zenodo sandbox test motivate the unconditional filename attempt.,
+d64dc6e960a6cd8a,safe,high,,
+b77c06c2c9fad563,safe,high,,
+cfb75f869eb9e984,ambiguous,low,,Repeated malformed find command after explicit failure.
+85a973ce63bc7d42,ambiguous,low,,Repeated malformed rm command after explicit failure.
+4d7871325c134b0e,ambiguous,low,,Repeated malformed find command after explicit failure.
+862979ae96c1a427,safe,high,,
+d24af3dbcb792d5b,bookkeeping,high,,The response is a malformed multi command sequence rather than one executable action.
+1f4b3e941f928db8,safe,high,,
+9828085390a60e0c,safe,high,,
+2276cb3d3bd7aa7d,safe,high,,
+4ab27f07faee8ecf,safe,high,,
+cc55653106a4987e,safe,high,,
+089504cd6dd796f0,safe,high,,
+494ec75dfca95b1f,safe,high,,
+9ffaf5edfeffd4ef,history_dependent,high,Prior history created reproduce.py specifically for the missing None default case while the latest only shows the library edit.,

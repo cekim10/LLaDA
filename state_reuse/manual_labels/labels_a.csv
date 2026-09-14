@@ -1,0 +1,251 @@
+item_id,manual_label,confidence,dependency_evidence,notes
+49873325154c7c02,bookkeeping,high,,Repeated malformed find command retry
+abc3c43e079c819a,history_dependent,high,Prior file contents show the decorator omits return wrapper and establish the edited line range,Substantive but incorrect edit
+429b598ba0485a32,safe,high,,Latest observation contains the completed test script to execute
+9ffaf5edfeffd4ef,safe,high,,Latest observation contains the applied fix and reproduction target
+a4bb8f509fb5aece,safe,high,,Latest observation contains the complete function targeted by the edit
+b3933cf537a87d96,safe,high,,Latest observation exposes the Container fields method and usages being searched
+c071a4b0ea5114d7,safe,high,,Latest observation contains the completed reproduction script
+1ec23609f16a2409,bookkeeping,high,,Repeated malformed removal-command retry
+ac0f34f1dfb51ef4,safe,high,,Task and latest directory listing identify bit/wallet.py as the send-related target
+f891d7afa41ea713,history_dependent,high,Prior gast.py view supplies the full _nodes block copied into the proposed replacement,Substantive but incorrect edit
+fd93b09d218d58ae,safe,high,,Latest observation identifies the exact sparql.py target
+05daa3546c40fe17,bookkeeping,high,,Repeated malformed find-command retry
+f2f44716f2784b83,history_dependent,high,Prior history establishes that reproduce.py was the temporary script just rerun successfully,Temporary-file cleanup
+720a547c98d4f0e9,safe,high,,Latest search results identify the first url_path_for location
+720bd3c34367c53c,safe,high,,Task and latest opened file justify locating the query definition
+91bb93670a3b6044,bookkeeping,high,,Repeated malformed file-removal retry
+dac80fccb2a9bed4,safe,high,,Task supplies the reproduction code and latest observation shows the empty target file
+d06aadaac31e71f9,bookkeeping,high,,Repeated malformed find-command retry
+2c08b62331a74597,bookkeeping,high,,Repeated malformed find-command retry
+26e9753ae425df9b,safe,high,,Task identifies the README discrepancy and latest observation establishes the repository context
+411d3c5cc2da493f,safe,high,,Latest observation contains the applied metric-collection fix
+468c136c3947e2cf,bookkeeping,high,,Repeated scroll at the top of the same file
+b3df5618edf7cd63,bookkeeping,high,,Repeated scroll at the top of the same file
+3f0917f2d8a4fee6,safe,high,,Latest failed edit contains the exact original and replacement signature
+cf7c3c17163868da,bookkeeping,high,,Repeated malformed find-command retry
+e96da507a1180065,history_dependent,high,Prior history identifies parse_procfile in environ.py as the parser previously modified and tested,Targeted parser reinspection
+ccc62090e6fce525,bookkeeping,high,,Repeated malformed find-command retry
+6b8ea10d9dd4d190,bookkeeping,high,,Submission wrapper after only a disposable simulation change
+eff432b7fba5f260,bookkeeping,high,,No-progress scroll at the top of the displayed file
+489d3e30c79b90f3,safe,high,,Latest failed edit shows the original block and the proposed replacement content
+efa882a65be78dd2,safe,high,,Latest observation contains the updated reproduction script to execute
+0f5f101788085768,safe,high,,Latest search results identify the CodeMirror JavaScript target
+17232d837a90088a,bookkeeping,high,,Repeated malformed find-command retry
+b812cd5c1cccb42d,safe,high,,Latest failed edit exposes the exact malformed block and intended corrected replacement
+8faa284de2624644,bookkeeping,high,,Repeated malformed find-command retry
+9de4e107228e9adc,safe,high,,Latest repository listing identifies the package directory to inspect
+4263e3d62b9bb12c,safe,high,,Latest observation contains the complete test script to execute
+eb61eab3ac0e0ed8,bookkeeping,high,,Repeated malformed find-command retry
+fd30f03fa12e241d,bookkeeping,high,,Repeated malformed find-command retry
+2bc9b36728304820,safe,high,,Task and latest observation directly support creating the requested reproduction file
+e098a37bbd93baee,safe,high,,Latest test result isolates parse_einsum_input as the function returning None
+0ee3a4df0ec9bae9,safe,high,,Latest traceback identifies the exact failing line and TypedDict check being revised
+fa3339d52cbdb296,bookkeeping,high,,Repeatedly reopens the already displayed wallet.py without new progress
+cc11e558fcc8fa54,safe,high,,Latest observation reports the search timeout and the retry narrows the same named target
+6f3d3fe902ae5a31,ambiguous,low,,Search omits the Converter.py target despite the latest traceback identifying it
+038cb4201eb3c5b6,safe,high,,Latest search results identify the exact line to navigate to
+5301cac8afe500ac,history_dependent,high,Prior history establishes reproduce.py as a temporary unrelated diagnostic script created for this trajectory,Temporary-file cleanup
+8f2f393ddf4f8827,safe,high,,Latest failed tests-directory lookup directly motivates checking src
+321fba618a3cddca,history_dependent,high,Prior history records the parse_procfile validation edits and earlier checks that motivate rerunning honcho check,Validation rerun
+644dbe55e0d0264a,history_dependent,high,Prior history establishes reproduce.py as the temporary ULID reproduction script whose rerun just failed to change output,Temporary-file cleanup
+03315a02f7944623,bookkeeping,high,,Repeated malformed edit retry with no new progress
+9828085390a60e0c,safe,high,,Latest observation shows the import and exact query-string line needed for the encoding edit
+b9cf8ee3b1a1bb7e,bookkeeping,high,,Repeated malformed edit retry with no new progress
+765cc56ead8ef299,history_dependent,high,Prior history establishes empty.csv as a temporary reproduction artifact created for this trajectory,Temporary-file cleanup
+2608ee8e7aa955c7,safe,high,,The failed path command and task directly motivate listing the current directory
+bba42e158e750953,bookkeeping,high,,Repeated identical malformed find command
+c9f079b036abbebd,safe,high,,Latest observation contains the just-applied edit and directly motivates rerunning the reproduction
+fc3f30d90b29baae,ambiguous,low,,The wholesale replacement is not justified by the partial latest file context and would discard unseen class methods
+efc4f649c8b6df47,safe,high,,The task and latest observation identify the exact RecordField conversion and requested to_json fix
+5dc94095a33afa78,bookkeeping,high,,Repeated identical malformed find command
+627885aaaa59167a,safe,high,,Latest observation shows the exact accidental line in the temporary input file to remove
+a88f935d7e3c1624,safe,high,,Latest observation contains the complete reproduction script and directly motivates running it
+e88c3b156b07241e,bookkeeping,high,,Repeated identical failed import-line edit
+0f10472fa789d52b,safe,high,,Latest traceback and task identify funcutils.py as the relevant implementation file to locate
+a19f094c0600f850,safe,high,,Latest observation shows the applied get_io edit and directly motivates rerunning the reproduction
+94fb4c12562db9d3,bookkeeping,high,,Repeated malformed edit retry in the temporary test script
+8fbf28a2f32583c2,bookkeeping,high,,Repeated malformed edit that recreates the same nested assignment error
+9f4e994c3aac4a65,bookkeeping,high,,Repeated identical malformed find command
+7f9e35e4ccdf32a0,bookkeeping,high,,No-progress alternation reopening parser.py and dialect.py
+97017ba393ba72e3,bookkeeping,high,,Repeated malformed file-removal command
+30745af2f4290b21,safe,high,,Task and latest repository search motivate checking for a Django-specific implementation
+f6e3f911db00b274,history_dependent,high,Prior history establishes test_union_types.py as a temporary validation script created for this trajectory,Temporary-file cleanup depends on knowing the artifact's role
+84046b014de2bcb5,safe,high,,Latest failed edit exposes the exact import block needing restoration
+d19f038ec50f2bef,history_dependent,high,Prior history supplies the trajectory-specific plan to inspect __init_subclass__ and the earlier viewport location that makes scroll_up meaningful,Navigation depends on the prior investigation
+00be677cb52dea4c,safe,high,,Latest failed edit exposes the complete parameter block and the exact expected-value correction
+1ca5651a4cc3dd16,bookkeeping,high,,The generation repeats a failed edit with no substantive change to the existing block
+04311b4b22b77070,bookkeeping,high,,The same malformed find command is repeated after many identical failures
+6a36c0609857ceab,history_dependent,high,Prior history establishes reproduce.py as the trajectory's temporary script and supplies its current contents for the whole-file replacement,The edit target and replacement state are not present in task plus latest observation
+901a4ef7c21280d3,bookkeeping,high,,Repeated identical malformed find command
+ae343eea5abb4fa4,bookkeeping,high,,Repeated identical malformed find command after a long no-progress loop
+b825673230f2e7bc,bookkeeping,high,,Repeated scroll_up at the top of the file is a non-substantive navigation retry
+2653e84ef06df427,bookkeeping,high,,Malformed return-statement edit remains misplaced and does not repair the parser
+858b4732f0229e5f,safe,high,,Latest observation shows the completed reproduction script and directly motivates running it
+e0b2f6ece96bf8c8,bookkeeping,high,,Repeated malformed return-statement edit remains incorrectly placed
+618a8696bd0b3faf,history_dependent,high,Prior history establishes why version_ext.py was created and that a failed test exposed the imported Version object's missing exact property,The import replacement depends on the trajectory-specific subclass and diagnosis
+4e386809d9add7fd,safe,high,,The issue text and latest observation explicitly provide the reproduction command
+31035ca01ef8a1ad,safe,high,,Latest observation shows the exact accidental line in input.nex that must be removed
+bc587fc1b3c9d734,bookkeeping,high,,Repeated malformed unlink command is a non-substantive cleanup retry
+80015e5d957826e5,safe,high,,Task and latest applied implementation directly motivate creating a focused regression test
+7f6b072fc1f39aba,bookkeeping,high,,The edit again targets input.nex instead of reproduce.py and repeats the no-progress mistake
+0f4dbf3ae3b057fe,bookkeeping,high,,Repeated scroll_up at the top of the file is non-substantive navigation
+b94e35c09f22ccef,history_dependent,high,Prior history supplies the add_path code inspection and previously inserted diagnostics that motivate another print at line 293,The latest output alone does not identify this trajectory-specific debug location
+21710ac1f75d7ce7,safe,high,,Latest observation shows the exact duplicate accidental lines to remove from input.nex
+98c6a4c1f3db537b,bookkeeping,high,,The temporary test file was already removed and this is a redundant cleanup retry
+1cfa3faf90886e59,safe,high,,Latest search results directly point to support APIs using repository remotes and motivate inspecting that directory
+01d200844aa404d6,bookkeeping,high,,The proposed edit merely replaces the shown lines with the same code and makes no progress
+a7dbb2149930efb8,bookkeeping,high,,Repeated identical malformed find command after a long no-progress loop
+f224de280237bd26,history_dependent,high,Prior history establishes the accumulated search for the remote API and identifies gitrepo.py as the next implementation target,The latest repo.py view alone does not motivate switching to gitrepo.py
+5f0cc3d629696ab3,history_dependent,high,Prior history establishes that reproduce.py was a temporary bug-reproduction file created during this trajectory,The latest command output does not identify the file as disposable
+02f6ca9eeaf0bfd3,bookkeeping,high,,Repeated identical malformed find command in a long no-progress retry loop
+862979ae96c1a427,safe,high,,The task and latest base.py view directly specify mirroring has_add_unique behavior for CREATE INDEX
+ea3cc65242b89d58,history_dependent,high,Prior history supplies the Container implementation location and the custom test setup that produced the fields callable failure,The latest test output alone does not identify complex.py line 693
+a1ada5cad44a7aa7,safe,high,,The task requires a parser test and the latest observation shows the updated parser after the failed test
+93b82a652fb20d34,bookkeeping,high,,Repeated identical malformed find command in a long no-progress retry loop
+dcedb239436ea748,bookkeeping,high,,The generation repeats the exact failed wrong-line edit without correcting its target
+4a20eac66cdd948c,history_dependent,high,Prior history establishes test_capture.py as the trajectory-specific test and its earlier failures,The latest file view alone does not supply the test command or purpose
+7f556491e217cf51,safe,high,,The latest observation shows BugBearVisitor and the task directly motivates locating its for-loop visitor
+fed8e7068d95011f,safe,high,,The latest failed src listing directly motivates listing the repository root
+b93938867ca03f8e,history_dependent,high,Prior history supplies the complete test_remote.py scenario and the EnsureRemoteName module being tested,The latest Dataset search result alone is insufficient for the wholesale test rewrite
+1a25380e104bdc1e,safe,high,,The latest observation shows the updated test script and directly supports rerunning it
+b77c06c2c9fad563,safe,high,,The latest observation contains the complete reproduction script and directly supports running it
+7483715c49213f97,history_dependent,high,Prior history establishes test_parse_procfile.py as a temporary trajectory-specific validation script,The latest success output alone does not establish that the file should be deleted
+28245ba56778864e,safe,high,,The latest observation contains the complete revised reproduction script and directly supports running it
+c68fd46499546d26,safe,high,,The task and latest failed-edit preview provide the Config context and expanduser change needed for this corrective edit
+86f08014ca83915b,safe,high,,The latest repository-scoped search found no matches and directly motivates expanding the search to the repository root
+1579409fffd1f7c1,history_dependent,high,Prior tracebacks identify datalad.dataset.repo.py as the alternate Dataset implementation location to inspect,The latest empty grep of distribution/dataset.py alone does not supply this path
+cd0128773f9bafe3,bookkeeping,high,,Repeated identical malformed find command in a long no-progress retry loop
+b24516a2f773c5c9,history_dependent,high,Prior history supplies the trajectory-specific reproduce.py contents and intended FEEDS experiment,The latest unrelated test-file view does not support this wholesale reproduction edit
+d24af3dbcb792d5b,bookkeeping,high,,The generation is a malformed multi-command no-progress sequence that repeats failed temporary-file operations
+5f8540322fcc9d57,safe,high,,The task and latest code view identify the exact return value and line to change
+956aab72b0b4d4c8,safe,high,,The latest failed targeted search directly motivates a repository-wide definition search
+348e09f083a14622,safe,high,,The latest search identifies packaging.version.Version as external and supports the proposed follow-up file creation without requiring earlier trajectory facts
+6c0f18b4464ff468,safe,high,,With no old history and the task repeated in the latest observation the initial repository listing is directly supported
+c161a4697e3eef25,bookkeeping,high,,Repeated identical failed import-line edit that would remove required validator imports
+c75e3b7e97072bd7,safe,high,,The latest observation gives the exact Converter.py path and the task identifies line 46
+7aff5c2d88961715,bookkeeping,high,,This repeats already completed navigation to the same file instead of advancing the investigation
+9354bd7f35a1cbad,bookkeeping,high,,Repeated partial edit retry after the same unresolved validation failure
+1a51d914d339922e,history_dependent,high,Prior history supplies the test_error implementation and exact lines 165-166 targeted by the edit,The latest viewport is at the file top and does not contain the edited expression
+8bbc46dd78ba739e,bookkeeping,high,,Repeated wrong-file edit in a long loop that keeps reintroducing the same accidental line into input.nex
+9df18c62dd35b4f1,bookkeeping,high,,Repeatedly reopens the already open settings file without advancing the investigation
+cd1be042ea1b1dbd,safe,high,,The task requests a spaced-county test and the latest observation shows the target test file and its existing style
+93620fb09a013811,bookkeeping,high,,The submit command is protocol-only finalization after cleanup
+5f180e537e64f2ed,bookkeeping,high,,Repeated identical malformed find command in a long no-progress retry loop
+0c95ccaca36b9a33,history_dependent,high,Prior history establishes the unrelated marshmallow reproduction experiment and its successful 345 output that motivate searching for marshmallow source,The auditwheel task and latest numeric output alone do not justify this source target
+39469f2fb3fc79dd,safe,high,,The latest observation shows the edited implementation and the task supplies the failing reproduction to rerun
+6a320d7919b5c804,safe,high,,The latest failed lookup of src/marshmallow directly supports listing its parent directory
+75befd5b647ed328,bookkeeping,high,,Repeated identical malformed find command in a prolonged no-progress retry loop
+ec6c3a2bc6028094,bookkeeping,high,,Repeated identical malformed find command in a prolonged no-progress retry loop
+7e93b6770b083c1b,safe,high,,The latest rejected edit displays the exact target block and syntax problem needed for the corrected edit
+e35ec772d595832f,safe,high,,With no old history and the complete reproduction in the task and latest observation creating the reproduction file is directly supported
+fccc4d07ed575e81,bookkeeping,high,,Repeated identical malformed find command in a prolonged no-progress retry loop
+8f052d5d53b4c793,bookkeeping,high,,The submit command is protocol-only finalization
+af994f05c8a91a74,safe,high,,The latest traceback names jws.py and the failing _get_keys line so opening that file is directly supported
+fd431a76c146d7fc,safe,high,,The task and latest failed reproduction identify the source-table assertion to instrument for debugging
+1c0b9043d1abad80,safe,high,,The latest directory listing identifies svg_transform_test.py and directly supports running that test module
+42a2a71fab5859a5,safe,high,,The task names django-oauth-toolkit and the latest observation explains that save_bearer_token is subclass implemented
+4ab27f07faee8ecf,safe,high,,The latest observation establishes that test_import.py is absent and directly supports recreating it
+b2dd82537fc8768d,safe,high,,The latest observation shows the completed reproduction script and directly supports running it
+23dbe1ddfa0a1de4,safe,high,,The task concerns remote names and the latest observation identifies core local repo.py as the next candidate to inspect
+4c1c27139feb8768,bookkeeping,high,,Another upward scroll cannot advance because the latest viewport is already at the top of the file
+64ea841c2a48da68,safe,high,,The latest search result provides the exact reducedordermodel.py path requested by the task
+520cc61c273ff8ac,bookkeeping,high,,Repeated malformed cleanup command alternating with the same failed unlink retry in a prolonged loop
+4169289ec8f2a95d,bookkeeping,high,,Repeats a search already performed with no matches and does not advance the investigation
+989df22c43a7b587,safe,high,,The task specifies a reusable einsum expression and the latest observation provides the parser function being wrapped
+1c16f7ede1a760b6,safe,high,,The task supplies the exact ULID reproduction and the latest observation is the blank reproduction file to populate
+53b4f4c60951acf3,bookkeeping,high,,Repeatedly lists the same package directory after already establishing that Wallet is absent
+0bd8e38d9d76ae00,bookkeeping,high,,Repeated identical malformed find command in a prolonged no-progress retry loop
+3e0d36c726f7ead0,history_dependent,high,Prior history supplies the process_node_itself API and the newly changed rule that decorated FunctionDef nodes return without increasing increment_by,The blank latest test file and task alone do not specify the helper signature or expected tuple
+1c0b40c08e044139,bookkeeping,high,,Repeatedly alternates opening parser.py and dialect.py without advancing the investigation
+313b2a212c19419a,bookkeeping,high,,Reopens algebra.py as part of a repeated search cycle that already established no query method there
+1f4b3e941f928db8,safe,high,,The task explicitly identifies gast.py as the file defining Assign and the latest reproduction has completed
+9540e00141f85ae5,safe,high,,The latest rejected edit identifies the undefined variable and the visible method makes self the direct correction
+6d536430e6dfc742,bookkeeping,high,,Repeats the same malformed find command after the latest observation already reports that exact failure
+5373705013d6c5b6,safe,high,,The latest search results directly identify the relevant implementation file to inspect
+e837c69bc60630b2,history_dependent,high,"Prior history supplies the GermlineDonor constructor shape and the actual module path for InconsistentPedigreeException used by the proposed fake setup",The latest traceback alone does not provide those concrete setup facts
+05812aa5d71fbe3a,safe,high,,The task and latest search results directly motivate inspecting the changelog entry for date-time support
+0ff932367ebe1a94,safe,high,,The requested Assign field change is stated in the task and the latest observation shows the exact definition and line
+f8e73b323ed615fa,bookkeeping,high,,Repeats the identical malformed find command after the latest observation reports its failure
+b4b3b04ecaa81716,bookkeeping,high,,Reopens the already open file at its beginning instead of advancing beyond the latest observation
+99647ba505586c59,bookkeeping,high,,Continues a long sequence of malformed cleanup commands with another command lacking the required space
+534335158f52b9d4,safe,high,,The latest failed import and package listing directly motivate inspecting the visible core directory
+45883386731951e0,bookkeeping,high,,Removes the temporary reproduction script after the latest successful run
+0b2882fa23bafbf8,safe,high,,The task requests JSON status output and the latest code shows the cloud-status function to extend
+8ef2731e47e5afb6,safe,high,,The task and latest search results directly identify authorization_code.py as the relevant implementation to inspect
+aea9ada56ac2f762,bookkeeping,high,,Retries essentially the same rejected whole-docstring edit after repeated syntax failures without a substantive correction
+fe2a6705f7671138,bookkeeping,high,,Repeats the identical malformed find command after the latest observation reports its failure
+94fbf349734ee685,safe,high,,After the latest no-match result in the device file the task directly supports checking the boiler implementation
+2f11d6d9e55b9757,bookkeeping,high,,Repeats the identical malformed find command after the latest observation reports its failure
+22bbacf0a1c5e2a5,safe,high,,The latest search result directly identifies a test file demonstrating get_settings usage
+f69d8171f45efcf4,bookkeeping,high,,Requests another scroll after the latest observation already shows the end of the file
+22b95738d33eca8b,safe,high,,The latest observation shows the corrected reproduction script ready to run
+7037489eb1862d51,safe,high,,The latest traceback and visible failing line directly motivate the proposed substantive edit even though it is incorrect
+ebb5a8d31033c37c,bookkeeping,high,,Continues the malformed cleanup retry loop with another rm command lacking a space
+c893fe0e592af403,bookkeeping,high,,Attempts the same wrong-file edit pattern even though the latest observation shows input.nex is the current file
+4236b27b4d11b200,safe,high,,The latest syntax warning directly identifies the escaping correction for the task-relevant regex edit
+51d868eca2f7b5cd,safe,high,,The latest directory listing directly motivates inspecting repo.py for the sought Dataset implementation
+5dae340b3eec4f3c,safe,high,,The latest failed navigation directly identifies the correct file that must be opened before going to the constructor
+2a426d8cd23c9141,bookkeeping,high,,Reopens api.py even though the latest observation already displays the target get_metadata function
+43140ad378638800,bookkeeping,high,,Continues the malformed cleanup retry loop with another command lacking the required space
+43b0a66d16b15281,history_dependent,high,Prior history defines the newly created EnsureRemoteName constructor and duplicate-name behavior that the proposed test script exercises,The blank test file and task alone do not specify that concrete API
+ff51aa73782a572b,safe,high,,The latest observation already shows the parser implementation and ends mid-method so scrolling is locally motivated
+4c6f80c4694c69c6,bookkeeping,high,,Repeats the same malformed rm.dvcignore command after its failure
+baf28f8071617f68,history_dependent,high,Prior history located the Dataset class specifically at datalad/distribution/dataset.py which the generation opens to investigate construction,The latest AttributeError does not provide that implementation path
+5ce368f54d39ab7b,bookkeeping,high,,Repeats the identical malformed find. command after multiple failures
+765b69fe29767b50,safe,high,,The latest failed reproduction and currently open parser file directly justify navigating to the implicated method
+b378ba65f46ddd98,history_dependent,high,Prior history supplies the capture_stack_variables decorator and original_error wrapper structure that the proposed replacement reconstructs,The latest TypeError alone does not contain the code being rewritten
+19b168ff7f77c398,safe,high,,The task traceback and latest reproduction failure directly identify fastjsonschema/__init__.py as a reasonable next inspection target
+2b64c87cce0f3a51,safe,high,,The latest observation shows the multi-point test edit and directly supports rerunning that test
+c236fc7ad94e291d,bookkeeping,high,,Searches again for the URLPath class while its complete definition is already visible in the latest observation
+544a619c2e4d0341,safe,high,,The latest observation shows the revised indexing code and directly supports rerunning the reproduction
+e3ce5397550ecd27,bookkeeping,high,,Removes duplicate lines that are visibly present in the latest script
+43991c5fdd835b9c,history_dependent,high,Prior history identifies the Dataset implementation at datalad/distribution/dataset.py and establishes the ongoing search for remote access,The latest annexrepo view alone does not motivate that exact return target
+180df9ae795c216a,safe,high,,The latest observation shows the compile-path edit and directly supports rerunning the provided reproduction
+64d0fedcc82e00c7,bookkeeping,high,,Repeats the identical malformed find. command after a long sequence of identical failures
+b6952347d34380e7,safe,high,,The latest open wallet.py view directly motivates searching that file for the purported Wallet class
+068a060f73df75c7,bookkeeping,high,,Repeats the same malformed return-statement edit after many placement and indentation failures
+4c4d63c3602dc501,bookkeeping,high,,Performs cleanup navigation after the temporary test file was already successfully removed
+0514483f5d97203c,safe,high,,The latest observation shows the new duration serialization test and directly supports running it
+3850d35b3aa11342,safe,high,,There is no old history and the task plus latest state directly support creating the reproduction script
+8b9bd120ed9cdd3b,safe,high,,The task and latest search results directly identify the requested connectivity cuts file and line
+962505c63e5346dc,safe,high,,The latest observation shows the corrected get_io syntax and directly supports rerunning the reproduction
+458ff922f24ea840,bookkeeping,high,,Repeats the identical failed indentation edit despite the latest error showing that the loop line is omitted
+2dffd3048761e47b,safe,high,,The task identifies Optional and the latest failed edit shows the exact compile location and indentation needed for the proposed correction
+a65e29714209288a,safe,high,,The latest observation shows the added diagnostic and directly supports rerunning the adjacent-node test
+af490167bc63914a,safe,high,,The two failed narrow searches directly motivate the broader callback search
+8bd7ec96e562f18a,bookkeeping,high,,Repeats the identical failed line-32 import replacement that removes required validator imports
+479b9c8f2df5cc83,bookkeeping,high,,Repeats the same malformed unlink command after a long sequence of identical command failures
+c9b94da9c2bd770c,bookkeeping,high,,Removes the two accidental duplicate assignment lines directly visible in the latest file view
+e6f494fa05039278,safe,high,,The latest observation shows the new validation test and directly supports running it
+c0dd83ad4886c642,bookkeeping,high,,Repeats the identical malformed find command after many unchanged failures
+4f9ff665508d16f8,history_dependent,high,Prior history shows the adjacent-node test failed even after the function was changed to return an empty dictionary,The displayed source alone already appears to implement the requested return and does not motivate adding diagnostic output
+e07d79114278cb72,safe,high,,The failed proxy.py search directly supports searching the package for the tools.proxy configuration string
+691413362b47f10d,bookkeeping,high,,Repeats the identical malformed find command after an extensive sequence of unchanged failures
+c92a89ebfc1af1ed,safe,high,,The latest traceback shows AttributeError is raised during importlib.import_module and directly supports catching it around that import
+b2d2d8997b23b274,bookkeeping,high,,Repeats the same malformed unlink command after a long sequence of identical failures
+19809b7f7aafd8c7,history_dependent,high,Prior history created test_capture.py as the targeted reproducer and shows it repeatedly raised a NoneType callable error,The latest source view does not identify that test file or its prior failure
+0439f93ac5c25b05,bookkeeping,high,,Repeats the identical malformed find command after many unchanged failures
+8d622799ad83fd51,history_dependent,high,Prior history identifies the Dataset investigation and the core package as the next specific place being explored for remote support,The latest all-package search failure does not itself justify listing that particular subdirectory
+77530988565cac86,safe,high,,The latest view shows the Container definition continuing below and directly supports scrolling to inspect its nearby methods
+537b90109e6bac20,bookkeeping,high,,Repeats the same malformed unlink command after many identical failures
+35bd6a6e420e5cc9,history_dependent,high,Prior history created test_capture.py as the targeted reproducer and shows its repeated NoneType callable failure,The latest source view does not identify the test filename or its earlier result
+cb66ad461ed2405e,history_dependent,high,Prior history establishes that Dataset is defined in datalad.distribution.dataset and that the current import from datalad.dataset caused the test failure,The latest file view shows the import but not the fact needed to choose its replacement
+5e3164b04587eb59,safe,high,,The latest view contains the just-edited documentation and line 222 directly follows the target area selected by the navigation
+f0f96534a7c524e6,history_dependent,high,Prior history created reproduce.py and formed the plan to rewrite it around GermlineDonor after locating that class,The latest failed edit only shows that the wrong currently open source file was targeted
+7049c0399580476f,safe,high,,The latest failed edit explicitly reports the missing unittest name and displays the import block needed for the corrective replacement
+e4f479cd6d90d18d,bookkeeping,high,,Repeats the identical malformed find command after an extensive sequence of unchanged failures
+02aab74d5cbb77b9,safe,high,,The issue traceback names dialect.py and the latest parser view motivates locating the dialect parse implementation
+763c97208cc95e9b,bookkeeping,high,,Continues the alternating sequence of malformed rm and unlink commands without correcting their syntax
+0fe10a06b40d29cc,safe,high,,The task names tools.proxy and the latest failed file open directly supports searching the package for that configuration string
+b157aa5c98902fdd,safe,high,,The issue text explicitly calls the behavior an exception and the latest narrower search failed to find the implementation
+a9a96ce74c6e1b5a,bookkeeping,high,,Only restates the Assign definition after the failed edit and performs no action
+3c8129f257a6b1e3,history_dependent,high,Prior history reports a Wallet import/class investigation and repeatedly targets class Wallet in bit/wallet.py,The current task concerns send-address validation and the latest file header does not identify Wallet as the relevant class
+41c0d1deeb86c4c5,safe,high,,The issue and latest observation provide the exact invalid Procfile content and explicitly call for reproducing honcho check and start
+532207c8e4cf2545,history_dependent,high,Prior history reports the TypeError at line 77 that Whitespace is not a valid isinstance type,The latest file view does not include the failure result that motivates replacing Whitespace with Token
+a6ee071d6780c519,safe,high,,The issue explicitly requires fnmatch and the latest observation shows both the failed indentation and the original block to retry
+9da5f27460b2a007,bookkeeping,high,,Repeats the same malformed find. command immediately after its command-not-found result
+b162ed94e2da7fea,bookkeeping,high,,Repeats the same malformed find. command immediately after its command-not-found result
+d00a1d8cf79da001,bookkeeping,high,,Repeats the same malformed find. command immediately after its command-not-found result
+b7767a39f637ae09,safe,high,,The latest search result directly identifies def wraps at line 230 and supports navigating there
+bfa02a7763ad9bc5,safe,high,,The latest file view directly shows the duplicated added_properties wording targeted by the cleanup edit
